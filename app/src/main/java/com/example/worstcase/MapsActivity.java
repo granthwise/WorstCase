@@ -67,7 +67,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         //READING A FULL TABLE OF DATA
 
-        BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAYO4MKXNF6QPMVBV3", "MiuoNvqvtGE9/xpnzQhIQGbjejGiWxD9xW3ECfYJ");
+        BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAYO4MKXNF4PU4GKOT", "NvVpxh0NIAwZpk2zNjDL7ZDg+RMxQXnTK/Kpb4OX");
         final AmazonDynamoDB ddb = new AmazonDynamoDBClient(awsCreds);
         String table_name = "Blue-Light-Locations";
         System.out.println("PAST CREDENTIALS");
@@ -151,48 +151,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,Boolean.valueOf(capacity), String.valueOf(landmarks)));
             i++;
         }
-
-        Map<String,AttributeValue> attributeValues = new HashMap<>();
-        attributeValues.put("ID",new AttributeValue().withN("jon@doe.com"));
-
-        attributeValues.put("Coordinates",new AttributeValue().withS("Jon Doe"));
-
-
-        attributeValues.put("Supplies",new AttributeValue().withNS("Jon Doe"));
-
-        //
-        attributeValues.put("Capacity",new AttributeValue().withBOOL(true));
-        attributeValues.put("Landmarks",new AttributeValue().withS("Jon Doe"));
-
-
-        final PutItemRequest request = new PutItemRequest()
-                .withTableName("Shelters")
-                .withItem(attributeValues);
-
-        class BasicallyAReadThread implements Runnable {
-            private volatile PutItemResult result;
-
-            @Override
-            public void run() {
-                result = ddb.putItem(request);
-            }
-
-            public PutItemResult getValue() {
-                return result;
-            }
-        }
-
-        BasicallyAReadThread bar = new BasicallyAReadThread();
-        Thread thread2 = new Thread(bar);
-        thread2.start();
-        try {
-            thread2.join();
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        PutItemResult addResult = bar.getValue();
-
-
 
     }
 }
