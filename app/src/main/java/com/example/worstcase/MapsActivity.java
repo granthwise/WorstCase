@@ -26,6 +26,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -105,7 +106,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         }
         ScanResult result = foo.getValue();
 
-        shelter[] shelterArray = new shelter[100];
+        ArrayList<shelter> shelterList = new ArrayList<>();
         int i = 0;
         int counter = 0;
         String number = "";
@@ -114,8 +115,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String food = "";
         String water = "";
         String medicine = "";
-        List<String> coord = new ArrayList<>();
-        List<String> supplies = new ArrayList<>();
+
+        Map<String,AttributeValue> coordMap = new HashMap<String,AttributeValue>();
+        Map<String,AttributeValue> suppliesMap = new HashMap<String,AttributeValue>();
         boolean capacity = false;
         String landmarks = "";
 
@@ -126,10 +128,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 if (counter == 0) {
                     number = item.get(location).getN();
                 } else if (counter == 1) {
-                    coord = item.get(location).getNS();
+                    coordMap = item.get(location).getM();
                 }
                 else if(counter == 2){
-                    supplies = item.get(location).getNS();
+                    suppliesMap = item.get(location).getM();
                 }
                 else if(counter == 3){
                     capacity = item.get(location).getBOOL();
@@ -139,17 +141,33 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 }
                 counter++;
             }
-            longi = coord.get(0);
-            lat = coord.get(1);
-            food = supplies.get(0);
-            water = supplies.get(1);
-            medicine = supplies.get(2);
+            lat = coordMap.get("Lat").getS();
+            longi = coordMap.get("Long").getS();
+            food = suppliesMap.get("Food").getN();
+            water = suppliesMap.get("Water").getN();
+            medicine = suppliesMap.get("Medicine").getN();
 
-            shelterArray[i] = new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,Boolean.valueOf(capacity), String.valueOf(landmarks));
+
+            shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,Boolean.valueOf(capacity), String.valueOf(landmarks)));
             i++;
         }
 
-        final PutItemRequest request = new PutItemRequest().withTableName("Music").withReturnConsumedCapacity("TOTAL");
+        Map<String,AttributeValue> attributeValues = new HashMap<>();
+        attributeValues.put("ID",new AttributeValue().withN("jon@doe.com"));
+
+        attributeValues.put("Coordinates",new AttributeValue().withS("Jon Doe"));
+
+
+        attributeValues.put("Supplies",new AttributeValue().withNS("Jon Doe"));
+
+        //
+        attributeValues.put("Capacity",new AttributeValue().withBOOL(true));
+        attributeValues.put("Landmarks",new AttributeValue().withS("Jon Doe"));
+
+
+        final PutItemRequest request = new PutItemRequest()
+                .withTableName("Shelters")
+                .withItem(attributeValues);
 
         class BasicallyAReadThread implements Runnable {
             private volatile PutItemResult result;
