@@ -14,6 +14,8 @@ import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
 import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.PutItemRequest;
+import com.amazonaws.services.dynamodbv2.model.PutItemResult;
 import com.amazonaws.services.dynamodbv2.model.ScanRequest;
 import com.amazonaws.services.dynamodbv2.model.ScanResult;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -147,7 +149,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             i++;
         }
 
+        final PutItemRequest request = new PutItemRequest().withTableName("Music").withReturnConsumedCapacity("TOTAL");
 
+        class BasicallyAReadThread implements Runnable {
+            private volatile PutItemResult result;
+
+            @Override
+            public void run() {
+                result = ddb.putItem(request);
+            }
+
+            public PutItemResult getValue() {
+                return result;
+            }
+        }
+
+        BasicallyAReadThread bar = new BasicallyAReadThread();
+        Thread thread2 = new Thread(bar);
+        thread2.start();
+        try {
+            thread2.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        PutItemResult addResult = bar.getValue();
 
 
 
