@@ -61,10 +61,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-
 
         //READING A TABLE DATA
 
@@ -106,7 +102,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             e.printStackTrace();
         }
         ScanResult result = foo.getValue();
-
+        System.out.println("GOT TO THE SHELTERLIST");
         ArrayList<shelter> shelterList = new ArrayList<>();
         int i = 0;
         int counter = 0;
@@ -152,6 +148,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,Boolean.valueOf(capacity), String.valueOf(landmarks)));
             i++;
         }
+        System.out.println("\n\n\n\n\n\n\n\n\n");
+        System.out.println(shelterList.get(0).getName());
+        System.out.println("\n\n\n\n\n\n\n\n\n");
         int index = 0;
         double distance = Math.sqrt(((29.69 - shelterList.get(0).getLat()) * (29.69 - shelterList.get(0).getLat())) + ((277.68 - shelterList.get(0).getLongi()) * (277.68 - shelterList.get(0).getLongi())));
         double smallest = distance;
