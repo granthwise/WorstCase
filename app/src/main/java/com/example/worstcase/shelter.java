@@ -19,7 +19,7 @@ public class shelter {
         this.food = food;
         this.water = water;
         this.medicine = medicine;
-        if (tempCapacity == "true") {
+        if (tempCapacity.equals("true")) {
             capacity = true;
         }
         else {
