@@ -3,6 +3,7 @@ package com.example.worstcase;
 import androidx.fragment.app.FragmentActivity;
 
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -13,6 +14,7 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.lang.*;
 
 //Proof of Concept Nate
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -44,6 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+
         // Add a marker in Sydney and move the camera
         //LatLng startPlace = new LatLng(29.64997, 277.65287);
         //mMap.addMarker(new MarkerOptions().position(startPlace).title("Start Place").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
@@ -53,12 +56,34 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         ArrayList<shelter> str = new ArrayList<>();
 
         shelter test1 = new shelter(29.64997, 277.6513, 2,1,2,true, "At chick fil a");
-        shelter test2 = new shelter(29.66, 277.66, 2,1,2,true, "At new place");
+        shelter test2 = new shelter(29.7, 277.7, 2,1,2,true, "whats up");
+        shelter test3 = new shelter(29.66, 277.66, 2,1,2,true, "At new place");
+        shelter test4 = new shelter(29.6, 277.8, 2,1,2,true, "At new place");
         str.add(test1);
         str.add(test2);
+        str.add(test3);
+        str.add(test4);
+        LatLng current = new LatLng(29.69, 277.68);
+        mMap.addMarker(new MarkerOptions().position(current).title("current location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(current));
+        int index = 0;
+        double distance = Math.sqrt(((29.69 - str.get(0).getLat()) * (29.69 - str.get(0).getLat())) + ((277.68 - str.get(0).getLongi()) * (277.68 - str.get(0).getLongi())));
+        double smallest = distance;
+        for (int x = 1; x < str.size(); x++) {
+            double tempDistance = Math.sqrt(((29.69 - str.get(x).getLat()) * (29.69 - str.get(x).getLat())) + ((277.68 - str.get(x).getLongi()) * (277.68 - str.get(x).getLongi())));
+            if (tempDistance < smallest) {
+                smallest = tempDistance;
+                index = x;
+            }
+        }
         for (int x = 0; x < str.size(); x++) {
             LatLng shelter = new LatLng(str.get(x).getLat(), str.get(x).getLongi());
-            mMap.addMarker(new MarkerOptions().position(shelter).title(str.get(x).getName() + " Food:" + str.get(x).getStringFood() + " Water: " + str.get(x).getStringWater()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            if (x == index) {
+                mMap.addMarker(new MarkerOptions().position(shelter).title(str.get(x).getName() + " Food:" + str.get(x).getStringFood() + " Water: " + str.get(x).getStringWater()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+            }
+            else {
+                mMap.addMarker(new MarkerOptions().position(shelter).title(str.get(x).getName() + " Food:" + str.get(x).getStringFood() + " Water: " + str.get(x).getStringWater()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(shelter));
         }
 
