@@ -61,10 +61,10 @@ public class shelter {
     }
 
     public String getStringWater() {
-        if (food == 0) {
+        if (water == 0) {
             return "None";
         }
-        else if (food == 1) {
+        else if (water == 1) {
             return "Low";
         }
         else {
@@ -73,10 +73,10 @@ public class shelter {
     }
 
     public String getStringMedicine() {
-        if (food == 0) {
+        if (medicine == 0) {
             return "None";
         }
-        else if (food == 1) {
+        else if (medicine == 1) {
             return "Low";
         }
         else {
