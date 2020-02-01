@@ -70,8 +70,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         System.out.println("PAST CREDENTIALS");
 
         final ScanRequest scanRequest1 = new ScanRequest()
-                .withTableName("Blue-Light-Locations")
-                .withAttributesToGet("Blue-Light-Number", "Location");
+                .withTableName("Shelters")
+                .withAttributesToGet("ID", "Capacity", "Coordinates" , "Landmarks" , "Supplies");
         System.out.println("created the scan request");
 
 
@@ -111,7 +111,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Map<String,AttributeValue> coordMap = new HashMap<String,AttributeValue>();
         Map<String,AttributeValue> suppliesMap = new HashMap<String,AttributeValue>();
-        boolean capacity = false;
+        String capacity = "";
         String landmarks = "";
 
         for (Map<String, AttributeValue> item : result.getItems()) {
@@ -119,30 +119,30 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             counter = 0;
             for (String location : locations) {
                 if (counter == 0) {
-                    number = item.get(location).getN();
+                    capacity = item.get(location).getS();
                 } else if (counter == 1) {
                     coordMap = item.get(location).getM();
                 }
                 else if(counter == 2){
-                    suppliesMap = item.get(location).getM();
+                    landmarks = item.get(location).getS();
                 }
                 else if(counter == 3){
-                    capacity = item.get(location).getBOOL();
+                    suppliesMap = item.get(location).getM();
                 }
                 else if(counter == 4){
-                    landmarks = item.get(location).getS();
+                    number = item.get(location).getN();
                 }
                 counter++;
             }
+
+
             lat = coordMap.get("Lat").getS();
             longi = coordMap.get("Long").getS();
-            food = suppliesMap.get("Food").getN();
-            water = suppliesMap.get("Water").getN();
-            medicine = suppliesMap.get("Medicine").getN();
+            food = suppliesMap.get("Food").getS();
+            water = suppliesMap.get("Water").getS();
+            medicine = suppliesMap.get("Medicine").getS();
 
-
-            shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,Boolean.valueOf(capacity), String.valueOf(landmarks)));
-            i++;
+        shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,String.valueOf(capacity), String.valueOf(landmarks)));
         }
         System.out.println("\n\n\n\n\n\n\n\n\n");
         System.out.println(shelterList.get(0).getName());
