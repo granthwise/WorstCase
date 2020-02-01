@@ -6,21 +6,21 @@ import android.view.View;
 import android.widget.TextView;
 import java.lang.*;
 
-public class ShelterButtonFP extends Activity {
+public class newShelterIP extends android.app.Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
+        setContentView(R.layout.intermediate_page);
 
-        Button shelter = (Button) findViewById(R.id.shelterButton);
+        Button victim = (Button) findViewById(R.id.newShelt);
 
-        shelter.setOnClickListener( new View.OnClickListener() {
+        victim.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                weSheltering();
+                newShelter();
             }
         });
     }
-    public void weSheltering() {
-        android.content.Intent intent = new android.content.Intent(this, intermediate_page.class);
+    public void newShelter() {
+        android.content.Intent intent= new android.content.Intent(this, JoesNewShelter.class);
         startActivity(intent);
     }
 }

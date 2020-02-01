@@ -4,13 +4,13 @@
 
     <Button
         android:id="@+id/newShelt"
-        android:layout_width=""
+        android:layout_width="540px"
         android:layout_height="match_parent"
         android:text="@string/newshelt" />
 
     <Button
         android:id="@+id/edit"
-        android:layout_width="wrap_content"
+        android:layout_width="540px"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
         android:text="@string/edit" />
