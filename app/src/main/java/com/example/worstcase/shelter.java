@@ -1,5 +1,7 @@
 package com.example.worstcase;
 
+//This was made
+
 public class shelter {
 
     public double lat;
