@@ -7,7 +7,7 @@
     android:layout_height="match_parent">
 
     <Button
-        android:id="@+id/victimButton"
+        android:id="@+id/shelterButton"
         android:layout_width="150dp"
         android:layout_height="75dp"
         android:layout_alignParentRight="true"
@@ -17,7 +17,7 @@
         android:text="@string/shelter" />
 
     <Button
-        android:id="@+id/shelterButton"
+        android:id="@+id/victimButton"
         android:layout_width="150dp"
         android:layout_height="75dp"
         android:layout_alignParentBottom="true"
@@ -27,12 +27,11 @@
 
     <TextView
         android:id="@+id/titleOfPage"
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:font="@font/basefont"
-        android:fontFamily=""
+        android:layout_width="match_parent"
+        android:layout_height="194dp"
         android:text="@string/title"
         android:textAllCaps="true"
-        android:textColorLink="#F44336"
-        android:textSize="30sp" />
+        android:textColor="#F44"
+        android:textSize="80sp" />
+
 </RelativeLayout>

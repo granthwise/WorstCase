@@ -3,7 +3,7 @@
     <string name="title_activity_maps">Map</string>
     <string name="victim">Map</string>
     <string name="shelter">Shelter Locations</string>
-    <string name="title">Worst Case</string>
+    <string name="title">Worst\nCase</string>
     <string name="edit">Update Shelter Information</string>
     <string name="newshelt">New Shelter</string>
 </resources>
