@@ -22,6 +22,7 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
@@ -150,6 +151,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,Boolean.valueOf(capacity), String.valueOf(landmarks)));
             i++;
+        }
+        int index = 0;
+        double distance = Math.sqrt(((29.69 - shelterList.get(0).getLat()) * (29.69 - shelterList.get(0).getLat())) + ((277.68 - shelterList.get(0).getLongi()) * (277.68 - shelterList.get(0).getLongi())));
+        double smallest = distance;
+        for (int x = 1; x < shelterList.size(); x++) {
+            double tempDistance = Math.sqrt(((29.69 - shelterList.get(x).getLat()) * (29.69 - shelterList.get(x).getLat())) + ((277.68 - shelterList.get(x).getLongi()) * (277.68 - shelterList.get(x).getLongi())));
+            if (shelterList.get(x).getCapacity() == false && tempDistance < smallest ) {
+                smallest = tempDistance;
+                index = x;
+            }
+        }
+        for (int x = 0; x < shelterList.size(); x++) {
+            LatLng shelter = new LatLng(shelterList.get(x).getLat(), shelterList.get(x).getLongi());
+            if (x == index) {
+                mMap.addMarker(new MarkerOptions().position(shelter).title(shelterList.get(x).getName() + " Food:" + shelterList.get(x).getStringFood() + " Water: " + shelterList.get(x).getStringWater()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+            }
+            else {
+                mMap.addMarker(new MarkerOptions().position(shelter).title(shelterList.get(x).getName() + " Food:" + shelterList.get(x).getStringFood() + " Water: " + shelterList.get(x).getStringWater()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            }
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(shelter));
         }
 
     }

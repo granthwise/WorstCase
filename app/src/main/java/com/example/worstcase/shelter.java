@@ -43,6 +43,42 @@ public class shelter {
         return medicine;
     }
 
+    public String getStringFood() {
+        if (food == 0) {
+            return "None";
+        }
+        else if (food == 1) {
+            return "Low";
+        }
+        else {
+            return "Full";
+        }
+    }
+
+    public String getStringWater() {
+        if (food == 0) {
+            return "None";
+        }
+        else if (food == 1) {
+            return "Low";
+        }
+        else {
+            return "Full";
+        }
+    }
+
+    public String getStringMedicine() {
+        if (food == 0) {
+            return "None";
+        }
+        else if (food == 1) {
+            return "Low";
+        }
+        else {
+            return "Full";
+        }
+    }
+
     public boolean getCapacity() {
         return capacity;
     }
