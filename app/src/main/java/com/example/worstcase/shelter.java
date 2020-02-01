@@ -35,4 +35,16 @@ public class shelter {
     public int getWater() {
         return water;
     }
+
+    public int getMedicine() {
+        return medicine;
+    }
+
+    public boolean getCapacity() {
+        return capacity;
+    }
+
+    public String getName() {
+        return name;
+    }
 }
