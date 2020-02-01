@@ -142,7 +142,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             water = suppliesMap.get("Water").getS();
             medicine = suppliesMap.get("Medicine").getS();
 
-        shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,String.valueOf(capacity), String.valueOf(landmarks)));
+        shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,capacity, String.valueOf(landmarks)));
         }
         System.out.println("\n\n\n\n\n\n\n\n\n");
         System.out.println(shelterList.get(0).getName());
