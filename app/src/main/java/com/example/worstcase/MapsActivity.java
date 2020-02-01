@@ -11,6 +11,9 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.util.ArrayList;
+
 //Proof of Concept Nate
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -27,6 +30,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
 
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -41,10 +45,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         // Add a marker in Sydney and move the camera
-        LatLng startPlace = new LatLng(29.64997, 277.65287);
-        mMap.addMarker(new MarkerOptions().position(startPlace).title("Start Place").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(startPlace));
+        //LatLng startPlace = new LatLng(29.64997, 277.65287);
+        //mMap.addMarker(new MarkerOptions().position(startPlace).title("Start Place").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+        //mMap.moveCamera(CameraUpdateFactory.newLatLng(startPlace));
 
+
+        ArrayList<shelter> str = new ArrayList<>();
+
+        shelter test1 = new shelter(29.64997, 277.6513, 2,1,2,true, "At chick fil a");
+        shelter test2 = new shelter(29.66, 277.66, 2,1,2,true, "At new place");
+        str.add(test1);
+        str.add(test2);
+        for (int x = 0; x < str.size(); x++) {
+            LatLng shelter = new LatLng(str.get(x).getLat(), str.get(x).getLongi());
+            mMap.addMarker(new MarkerOptions().position(shelter).title(str.get(x).getName() + " Food:" + str.get(x).getStringFood() + " Water: " + str.get(x).getStringWater()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(shelter));
+        }
 
     }
 }
