@@ -12,14 +12,19 @@ public class shelter {
     public boolean capacity;
     public String name;
 
-    public shelter(int number, double lat, double longi, int food, int water, int medicine, boolean capacity, String name) {
+    public shelter(int number, double lat, double longi, int food, int water, int medicine, String tempCapacity, String name) {
         this.number = number;
         this.lat = lat;
         this.longi = longi;
         this.food = food;
         this.water = water;
         this.medicine = medicine;
-        this.capacity = capacity;
+        if (tempCapacity == "true") {
+            capacity = true;
+        }
+        else {
+            capacity = false;
+        }
         this.name = name;
     }
 
@@ -78,6 +83,8 @@ public class shelter {
             return "Full";
         }
     }
+
+
 
     public boolean getCapacity() {
         return capacity;
