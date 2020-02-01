@@ -55,10 +55,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         ArrayList<shelter> str = new ArrayList<>();
 
-        shelter test1 = new shelter(29.64997, 277.6513, 2,1,2,true, "At chick fil a");
+        shelter test1 = new shelter(29.64997, 277.6513, 2,1,0,false, "At chick fil a");
         shelter test2 = new shelter(29.7, 277.7, 2,1,2,true, "whats up");
-        shelter test3 = new shelter(29.66, 277.66, 2,1,2,true, "At new place");
-        shelter test4 = new shelter(29.6, 277.8, 2,1,2,true, "At new place");
+        shelter test3 = new shelter(29.66, 277.66, 2,0,2,false, "At new place");
+        shelter test4 = new shelter(29.6, 277.8, 2,1,2,false, "At new place again");
         str.add(test1);
         str.add(test2);
         str.add(test3);
@@ -71,7 +71,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         double smallest = distance;
         for (int x = 1; x < str.size(); x++) {
             double tempDistance = Math.sqrt(((29.69 - str.get(x).getLat()) * (29.69 - str.get(x).getLat())) + ((277.68 - str.get(x).getLongi()) * (277.68 - str.get(x).getLongi())));
-            if (tempDistance < smallest) {
+            if (str.get(x).getCapacity() == false && tempDistance < smallest ) {
                 smallest = tempDistance;
                 index = x;
             }
