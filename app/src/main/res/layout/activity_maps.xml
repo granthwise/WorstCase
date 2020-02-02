@@ -1,15 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/map"
-    android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MapsActivity"
-    android:layout_marginBottom="350sp"
+    android:orientation="vertical"
     >
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="500dp"
+        android:layout_weight="10"
+        />
 
 
+    <TextView
+        android:id="@+id/closest"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/map"
+        android:text="Closest Shelter with Vacancy"
+        android:textAlignment="center"
+        android:textSize="30sp" />
 
-</fragment>
+    <TextView
+        android:id="@+id/shelter_title"
+        android:layout_width="match_parent"
+        android:textAlignment="center"
+        android:layout_height="wrap_content"
+        android:text="Landmark Here"
+        android:textSize="28sp"
+        android:layout_below="@id/closest"
+        />
+
+    <TextView
+        android:id="@+id/shelter_aid_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="First Aid:"
+        android:layout_below="@id/shelter_title"
+        android:textSize="25sp"
+        android:layout_marginRight="40dp"
+        android:layout_alignRight="@id/shelter_aid_number"
+        />
+    <TextView
+        android:id="@+id/shelter_aid_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:layout_alignBottom="@id/shelter_aid_text"
+        android:layout_marginLeft="140dp"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        />
+
+    <TextView
+        android:id="@+id/shelter_food_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Food:"
+        android:layout_below="@id/shelter_aid_number"
+        android:textSize="25sp"
+        android:layout_marginRight="40dp"
+        android:layout_alignRight="@+id/shelter_food_number"
+        />
+
+    <TextView
+        android:id="@+id/shelter_food_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/shelter_food_text"
+        android:layout_marginLeft="140dp"
+        android:text="3"
+        android:textColor="#000000"
+        android:textSize="25sp" />
+
+    <TextView
+        android:id="@+id/shelter_water_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="40dp"
+        android:text="Water:"
+        android:layout_below="@id/shelter_food_text"
+        android:textSize="25sp"
+        android:layout_alignRight="@id/shelter_water_number"        />
+    <TextView
+        android:id="@+id/shelter_water_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="3"
+        android:layout_below="@id/shelter_food_number"
+        android:layout_marginLeft="140dp"
+        android:textSize="25sp"
+        android:textColor="#000000"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/shelter_water_number"
+        android:layout_centerHorizontal="true"
+        android:text="Refresh"
+        android:id="@+id/refresh_button"
+        />
+</RelativeLayout>
+
