@@ -148,7 +148,7 @@ public class OrganizerActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+            Intent homeIntent = new Intent(getApplicationContext(), intermediatePageButtons.class);
             startActivity(homeIntent);
 
         }

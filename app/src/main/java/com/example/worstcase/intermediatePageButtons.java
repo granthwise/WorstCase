@@ -1,4 +1,5 @@
 package com.example.worstcase;
+import android.content.Intent;
 import android.widget.Button;
 import android.os.Bundle;
 import android.app.Activity;
@@ -11,28 +12,27 @@ public class intermediatePageButtons extends android.app.Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intermediate_page);
 
-        Button newSheltr = (Button) findViewById(R.id.newShelt);
+        Button newShelter = (Button) findViewById(R.id.newShelt);
+        Button editor = (Button) findViewById(R.id.edit);
 
-        newSheltr.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                newShelter();
+        newShelter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), EditActivity.class);
+                //how to pass information
+                startActivity(startIntent);
             }
         });
 
-        Button editr = (Button) findViewById(R.id.edit);
-
-        editr.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View view) {
-                editShelters();
+        editor.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), OrganizerActivity.class);
+                //how to pass information
+                startActivity(startIntent);
             }
         });
-    }
-    public void newShelter() {
-        android.content.Intent intent= new android.content.Intent(this, OrganizerActivity.class);
-        startActivity(intent);
-    }
-    public void editShelters() {
-        android.content.Intent intent= new android.content.Intent(this, shelter_edit_page.class);
-        startActivity(intent);
     }
 }
+
+
