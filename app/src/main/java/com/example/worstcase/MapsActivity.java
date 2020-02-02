@@ -2,7 +2,14 @@ package com.example.worstcase;
 
 import androidx.fragment.app.FragmentActivity;
 
+import android.Manifest;
+import android.content.Context;
+import android.content.pm.PackageManager;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
+
+import androidx.core.app.ActivityCompat;
 
 import com.amazonaws.auth.BasicAWSCredentials;
 import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
@@ -53,6 +60,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
+        mMap.setMinZoomPreference(7);
 
         BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAYO4MKXNF4PU4GKOT", "NvVpxh0NIAwZpk2zNjDL7ZDg+RMxQXnTK/Kpb4OX");
         final AmazonDynamoDB ddb = new AmazonDynamoDBClient(awsCreds);
@@ -134,6 +142,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,capacity, String.valueOf(landmarks)));
         }
 
+        if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            return;
+        }
+        LocationManager locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+        // get the last know location from your location manager.
+        final Location finalLocation = locationManager.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+        // now get the lat/lon from the location and do something with it.
+        System.out.println(finalLocation.getLatitude());
+        System.out.println(finalLocation.getLongitude());
+        LatLng location = new LatLng(finalLocation.getLatitude(), finalLocation.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(location).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(location));
+
         int index = 0;
         double distance = Math.sqrt(((29.69 - shelterList.get(0).getLat()) * (29.69 - shelterList.get(0).getLat())) + ((277.68 - shelterList.get(0).getLongi()) * (277.68 - shelterList.get(0).getLongi())));
         double smallest = distance;
@@ -154,9 +175,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(shelter));
         }
-        LatLng shelter = new LatLng(29.69, 277.68);
-        mMap.addMarker(new MarkerOptions().position(shelter).title("Current Location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(shelter));
+
 
 
     }
