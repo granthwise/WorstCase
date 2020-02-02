@@ -2,6 +2,7 @@ package com.example.worstcase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -28,7 +29,7 @@ public class EditActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit);
 
-        Button submit = (Button) findViewById(R.id.submit_button);
+        Button submit = (Button) findViewById(R.id.update_button);
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -116,6 +117,8 @@ public class EditActivity extends AppCompatActivity {
             }
 
         });
+        Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+        startActivity(homeIntent);
     }
 
 }

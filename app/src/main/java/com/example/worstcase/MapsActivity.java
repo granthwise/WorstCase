@@ -156,10 +156,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (int x = 0; x < shelterList.size(); x++) {
             LatLng shelter = new LatLng(shelterList.get(x).getLat(), shelterList.get(x).getLongi());
             if (x == index) {
-                mMap.addMarker(new MarkerOptions().position(shelter).title(" Food:" + shelterList.get(x).getStringFood() + " Water: " + shelterList.get(x).getStringWater() + " Medicine:" + shelterList.get(x).getStringMedicine() + " At Capacity: " + shelterList.get(x).getCapacity()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                mMap.addMarker(new MarkerOptions().position(shelter).title(shelterList.get(x).name).snippet("Food: " + shelterList.get(x).getStringFood() + "     Water: " + shelterList.get(x).getStringWater() + "     First Aid: " + shelterList.get(x).getStringMedicine() + "     At capacity: " + shelterList.get(x).getCapacity()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
             }
             else {
-                mMap.addMarker(new MarkerOptions().position(shelter).title(" Food:" + shelterList.get(x).getStringFood() + " Water: " + shelterList.get(x).getStringWater() + " Medicine:" + shelterList.get(x).getStringMedicine() + " At Capacity: " + shelterList.get(x).getCapacity()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                mMap.addMarker(new MarkerOptions().position(shelter).title(shelterList.get(x).name).snippet("Food: " + shelterList.get(x).getStringFood() + "     Water: " + shelterList.get(x).getStringWater() + "     First Aid: " + shelterList.get(x).getStringMedicine() + "     At capacity: " + shelterList.get(x).getCapacity()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(shelter));
         }
