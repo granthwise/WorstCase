@@ -63,9 +63,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        // Add a marker in Sydney and move the camera
-
-        //READING A TABLE DATA
 
         BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAYO4MKXNF4PU4GKOT", "NvVpxh0NIAwZpk2zNjDL7ZDg+RMxQXnTK/Kpb4OX");
         final AmazonDynamoDB ddb = new AmazonDynamoDBClient(awsCreds);
@@ -138,7 +135,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 counter++;
             }
 
-
             lat = coordMap.get("Lat").getS();
             longi = coordMap.get("Long").getS();
             food = suppliesMap.get("Food").getS();
@@ -148,9 +144,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,capacity, String.valueOf(landmarks)));
         }
 
-        System.out.println("\n\n\n\n\n\n\n\n\n");
-        System.out.println(shelterList.get(0).getName());
-        System.out.println("\n\n\n\n\n\n\n\n\n");
         int index = 0;
         double distance = Math.sqrt(((29.69 - shelterList.get(0).getLat()) * (29.69 - shelterList.get(0).getLat())) + ((277.68 - shelterList.get(0).getLongi()) * (277.68 - shelterList.get(0).getLongi())));
         double smallest = distance;
