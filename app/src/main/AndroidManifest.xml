@@ -2,8 +2,14 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.worstcase">
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 
 =======
+>>>>>>> Stashed changes
+=======
+
+
+
 >>>>>>> Stashed changes
     <!--
          The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
