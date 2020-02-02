@@ -133,7 +133,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi),Integer.valueOf(food) ,Integer.valueOf(water) ,Integer.valueOf(medicine) ,capacity, String.valueOf(landmarks)));
         }
-
+        //coolio
         int index = 0;
         double distance = Math.sqrt(((29.69 - shelterList.get(0).getLat()) * (29.69 - shelterList.get(0).getLat())) + ((277.68 - shelterList.get(0).getLongi()) * (277.68 - shelterList.get(0).getLongi())));
         double smallest = distance;
