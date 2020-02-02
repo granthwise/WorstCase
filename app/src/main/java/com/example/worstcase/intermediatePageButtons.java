@@ -32,7 +32,7 @@ public class intermediatePageButtons extends android.app.Activity {
         startActivity(intent);
     }
     public void editShelters() {
-        //android.content.Intent intent= new android.content.Intent(this, ShelterPuberty.class);
-       // startActivity(intent);
+        android.content.Intent intent= new android.content.Intent(this, shelter_edit_page.class);
+        startActivity(intent);
     }
 }
