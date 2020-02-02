@@ -123,10 +123,6 @@ public class OrganizerActivity extends AppCompatActivity {
 
             attributeValues.put("Supplies",new AttributeValue().withM(suppliesMap));
 
-
-
-
-
             final PutItemRequest request = new PutItemRequest()
                     .withTableName("Shelters")
                     .withItem(attributeValues);
@@ -152,12 +148,13 @@ public class OrganizerActivity extends AppCompatActivity {
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+            Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+            startActivity(homeIntent);
+
         }
     });
 
-        Intent homeIntent = new Intent(getApplicationContext(), frontPageButtons.class);
-        //how to pass information
-        startActivity(homeIntent);
+
 
 
     }

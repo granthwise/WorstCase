@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fafa"
+    tools:context=".EditActivity">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+        <TextView
+            android:id="@+id/organization_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update Shelter Data"
+            android:textSize="30dp"
+            android:textAlignment="center"
+            android:layout_marginTop="10dp"
+            android:typeface="monospace"
+
+            />
+
+        <EditText
+            android:typeface="monospace"
+            android:id="@+id/organization_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Organization ID Number"
+            android:layout_below="@id/organization_title"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="40dp"
+            android:textSize="20dp"
+            android:ems="10"
+            android:inputType="number"
+            />
+
+        <EditText
+            android:id="@+id/organization_shelter_aid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="First Aid "
+            android:layout_below="@id/organization_provisions_header"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="225dp"
+            android:layout_marginTop="10dp"
+            android:typeface="monospace"
+            android:textSize="20dp"
+
+            />
+
+        <EditText
+            android:id="@+id/organization_shelter_water"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Shelter"
+            android:layout_below="@id/organization_shelter_food"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="225dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            android:typeface="monospace"
+
+            />
+
+
+        <EditText
+            android:typeface="monospace"
+            android:id="@+id/organization_shelter_food"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Food"
+            android:layout_below="@id/organization_shelter_aid"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="225dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+
+            />
+
+        <EditText
+            android:typeface="monospace"
+            android:id="@+id/organization_shelter_maxcapacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Maximum Capacity"
+            android:layout_below="@id/organization_id"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_marginTop="10dp"
+            android:textSize="20dp"
+            />
+
+        <TextView
+            android:typeface="monospace"
+            android:id="@+id/organization_provisions_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Supplies"
+            android:layout_below="@id/organization_shelter_maxcapacity"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="20dp"
+            android:textSize="20dp"
+            android:textColor="#595959"
+            android:textAlignment="center"
+
+            />
+
+        <TextView
+            android:typeface="monospace"
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Update current amount of provisions with numbers 0-2. 0 for empty reserves, 1 for low reserves, 2 for high reserves"
+            android:layout_below="@id/submit_button"
+            android:layout_marginLeft="50dp"
+            android:layout_marginRight="50dp"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="70dp"
+            android:textSize="16dp"
+            android:textColor="#595959"
+            android:textAlignment="center"
+
+            />
+
+
+
+        <Button
+            android:id="@+id/submit_button"
+            android:typeface="monospace"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/organization_shelter_water"
+            android:text="Update"
+            android:textAlignment="center"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="50dp"
+            android:textSize="20dp"
+            />
+
+    </RelativeLayout>
+</ScrollView>
