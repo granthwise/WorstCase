@@ -10,7 +10,6 @@
         android:layout_weight="1"
         android:layout_height="match_parent"
         android:layout_alignParentRight="true"
-        android:alignParentEnd ="true"
         android:layout_alignParentBottom = "true"
         android:layout_marginBottom = "10dp"
         android:typeface="monospace"
