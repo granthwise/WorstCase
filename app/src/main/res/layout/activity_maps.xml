@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="#B5DDFF"
     >
+
+
     <fragment
         android:id="@+id/map"
         android:name="com.google.android.gms.maps.SupportMapFragment"
         android:layout_width="match_parent"
         android:layout_height="450dp"
-        android:layout_weight="10"
-        />
-
+        android:layout_weight="10" />
 
     <TextView
         android:id="@+id/closest"
@@ -22,7 +23,9 @@
         android:layout_below="@id/map"
         android:text="Closest Shelter with Vacancy"
         android:textAlignment="center"
-        android:textSize="30sp" />
+        android:textColor="#000"
+        android:textSize="30sp"
+        android:typeface="serif" />
 
     <TextView
         android:id="@+id/shelter_title"
@@ -32,6 +35,7 @@
         android:text="Landmark Here"
         android:textSize="28sp"
         android:layout_below="@id/closest"
+        android:typeface="serif"
         />
 
     <TextView
@@ -43,6 +47,7 @@
         android:textSize="25sp"
         android:layout_marginRight="50dp"
         android:layout_alignRight="@id/shelter_aid_number"
+        android:typeface="serif"
         />
     <TextView
         android:id="@+id/shelter_aid_number"
@@ -53,6 +58,7 @@
         android:layout_marginLeft="160dp"
         android:textSize="25sp"
         android:textColor="#000000"
+        android:typeface="serif"
         />
 
     <TextView
@@ -64,6 +70,7 @@
         android:textSize="25sp"
         android:layout_marginRight="50dp"
         android:layout_alignRight="@+id/shelter_food_number"
+        android:typeface="serif"
         />
 
     <TextView
@@ -74,7 +81,8 @@
         android:layout_marginLeft="160dp"
         android:text="3"
         android:textColor="#000000"
-        android:textSize="25sp" />
+        android:textSize="25sp"
+        android:typeface="serif"/>
 
     <TextView
         android:id="@+id/shelter_water_text"
@@ -84,7 +92,8 @@
         android:text="Water:"
         android:layout_below="@id/shelter_food_text"
         android:textSize="25sp"
-        android:layout_alignRight="@id/shelter_water_number"        />
+        android:layout_alignRight="@id/shelter_water_number"
+        android:typeface="serif"/>
     <TextView
         android:id="@+id/shelter_water_number"
         android:layout_width="wrap_content"
@@ -94,6 +103,7 @@
         android:layout_marginLeft="160dp"
         android:textSize="25sp"
         android:textColor="#000000"
+        android:typeface="serif"
         />
 
     <Button
@@ -103,6 +113,7 @@
         android:layout_centerHorizontal="true"
         android:text="Refresh"
         android:id="@+id/refresh_button"
+        android:typeface="serif"
         />
 </RelativeLayout>
 

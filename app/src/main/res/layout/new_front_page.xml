@@ -6,8 +6,6 @@
     android:background="@drawable/front_pageee"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".frontPageButtons">
-    >
-
 
     <Button
         android:id="@+id/shelterButton"
@@ -18,7 +16,7 @@
         android:layout_marginRight="30dp"
         android:layout_marginBottom="10dp"
         android:text="First Responders"
-        android:typeface="monospace" />
+        android:typeface="serif" />
 
     <Button
         android:id="@+id/victimButton"
@@ -29,23 +27,24 @@
         android:layout_marginBottom="10dp"
         android:text="Civilians"
         android:textSize="16sp"
-        android:typeface="monospace" />
+        android:typeface="serif" />
 
     <TextView
         android:id="@+id/titleOfPage"
         android:layout_width="wrap_content"
-        android:layout_height="188dp"
+        android:layout_height="189dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="-22dp"
-        android:layout_marginRight="-22dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginEnd="-8dp"
+        android:layout_marginRight="-8dp"
         android:text="@string/title"
+        android:textAlignment="center"
         android:textAllCaps="true"
         android:textColor="#ffff"
         android:textSize="51sp"
         android:textStyle="bold"
-        android:typeface="monospace" />
+        android:typeface="serif" />
 
 </RelativeLayout>

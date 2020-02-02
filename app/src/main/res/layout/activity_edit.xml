@@ -3,27 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fafa"
+    android:background="#B5DDFF"
     tools:context=".EditActivity">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         >
+
         <TextView
             android:id="@+id/update_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Update Shelter Data"
-            android:textSize="30dp"
-            android:textAlignment="center"
             android:layout_marginTop="10dp"
-            android:typeface="monospace"
+            android:text="Update Shelter Data"
+            android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="30dp"
 
-            />
+            android:typeface="serif" />
 
         <EditText
-            android:typeface="monospace"
+            android:typeface="serif"
             android:id="@+id/edit_organization_id"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -46,7 +47,7 @@
             android:layout_marginLeft="50dp"
             android:layout_marginRight="225dp"
             android:layout_marginTop="10dp"
-            android:typeface="monospace"
+            android:typeface="serif"
             android:textSize="20dp"
 
             />
@@ -61,13 +62,13 @@
             android:layout_marginRight="225dp"
             android:layout_marginTop="10dp"
             android:textSize="20dp"
-            android:typeface="monospace"
+            android:typeface="serif"
 
             />
 
 
         <EditText
-            android:typeface="monospace"
+            android:typeface="serif"
             android:id="@+id/edit_organization_shelter_food"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -81,7 +82,7 @@
             />
 
         <EditText
-            android:typeface="monospace"
+            android:typeface="serif"
             android:id="@+id/edit_organization_shelter_maxcapacity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -94,24 +95,24 @@
             />
 
         <TextView
-            android:typeface="monospace"
             android:id="@+id/edit_organization_provisions_header"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Supplies"
             android:layout_below="@id/edit_organization_shelter_maxcapacity"
-            android:layout_marginLeft="50dp"
-            android:layout_marginRight="50dp"
             android:layout_centerHorizontal="true"
+            android:layout_marginLeft="50dp"
             android:layout_marginTop="20dp"
-            android:textSize="20dp"
-            android:textColor="#595959"
+            android:layout_marginRight="50dp"
+            android:text="Supplies"
             android:textAlignment="center"
+            android:textColor="#000"
+            android:textSize="20dp"
+            android:typeface="serif"
 
             />
 
         <TextView
-            android:typeface="monospace"
+            android:typeface="serif"
             android:id="@+id/description"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -131,7 +132,7 @@
 
         <Button
             android:id="@+id/update_button"
-            android:typeface="monospace"
+            android:typeface="serif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/edit_organization_shelter_water"
