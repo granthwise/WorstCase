@@ -9,7 +9,25 @@
     tools:context=".MapsActivity"
     android:background="@drawable/front_pageee">
 
+        <Button
+            android:id="@+id/shelterButton"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom = "true"
+            android:layout_marginRight = "30dp"
+            android:layout_marginBottom = "10dp"
+            android:text="@string/shelter" />
 
+        <Button
+            android:id="@+id/victimButton"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft = "30dp"
+            android:layout_marginBottom = "10dp"
+            android:textAlignment="center"
+            android:text= "@string/victim" />
 
     <Button
         android:id="@+id/shelterButton"
