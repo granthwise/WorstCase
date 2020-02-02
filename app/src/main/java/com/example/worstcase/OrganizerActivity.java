@@ -27,6 +27,7 @@ public class OrganizerActivity extends AppCompatActivity {
         EditText organization_shelter_id = (EditText)findViewById(R.id.organization_id);
         EditText organization_shelter_maxcapacity = (EditText)findViewById(R.id.organization_shelter_maxcapacity);
         EditText organization_shelter_landmarks = (EditText)findViewById(R.id.organization_shelter_landmarks);
+
         //return these to dynamo
         String organization_id_string = organization_title.getText().toString();
         String organization_shelter_latitude_string = organization_shelter_latitude.getText().toString();
@@ -63,6 +64,8 @@ public class OrganizerActivity extends AppCompatActivity {
                 }
             }
         });
+
+        ////////////////////// SEND THE STRINGS TO DYNAMO HERER/////////////////////////////////////
 
 
     }
