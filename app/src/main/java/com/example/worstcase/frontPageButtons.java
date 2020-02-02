@@ -7,7 +7,7 @@ import android.view.View;
 public class frontPageButtons extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.front_page);
+        setContentView(R.layout.new_front_page);
 
         Button victim = (Button) findViewById(R.id.victimButton);
 
