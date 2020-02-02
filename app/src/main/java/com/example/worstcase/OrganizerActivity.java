@@ -2,6 +2,7 @@ package com.example.worstcase;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -153,6 +154,10 @@ public class OrganizerActivity extends AppCompatActivity {
             }
         }
     });
+
+        Intent homeIntent = new Intent(getApplicationContext(), frontPageButtons.class);
+        //how to pass information
+        startActivity(homeIntent);
 
 
     }
