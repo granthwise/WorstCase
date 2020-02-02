@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">WorstCase</string>
     <string name="title_activity_maps">Map</string>
+    <string name="victim">Map</string>
+    <string name="title">Worst \nCase</string>
+    <string name="shelter">Shelter Locations</string>
+    <string name="editExisting">Edit Existing Location</string>
+    <string name="newshelt">Create New Shelter</string>
 </resources>

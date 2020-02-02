@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/map"
     android:name="com.google.android.gms.maps.SupportMapFragment"
     android:layout_width="match_parent"
-<<<<<<< Updated upstream
     android:layout_height="match_parent"
-    tools:context=".MapsActivity" />
-=======
-    android:layout_height="match_parent">
-
+    tools:context=".MapsActivity"
+    >
     <Button
         android:id="@+id/shelterButton"
         android:layout_width="150dp"
@@ -19,6 +16,7 @@
         android:layout_alignParentBottom = "true"
         android:layout_marginRight = "30dp"
         android:layout_marginBottom = "10dp"
+        android:typeface="monospace"
         android:text="@string/shelter" />
 
     <Button
@@ -28,17 +26,22 @@
         android:layout_alignParentBottom="true"
         android:layout_marginLeft = "30dp"
         android:layout_marginBottom = "10dp"
-        android:textAlignment=""
+        android:typeface="monospace"
         android:text= "@string/victim" />
 
     <TextView
         android:id="@+id/titleOfPage"
-        android:layout_width="match_parent"
-        android:layout_height="194dp"
+        android:layout_width="wrap_content"
+        android:layout_height="188dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="6dp"
+        android:layout_marginRight="6dp"
         android:text="@string/title"
         android:textAllCaps="true"
         android:textColor="#F44"
-        android:textSize="80sp" />
+        android:textSize="70sp"
+        android:textStyle="bold"
+        android:typeface="monospace" />
 
 </RelativeLayout>
->>>>>>> Stashed changes

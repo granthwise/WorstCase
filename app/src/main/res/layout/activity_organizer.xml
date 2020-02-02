@@ -16,23 +16,12 @@
         android:textSize="40dp"
         android:textAlignment="center"
         android:layout_marginTop="10dp"
+        android:typeface="monospace"
 
         />
 
     <EditText
-        android:id="@+id/organization_name"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Organization Name"
-        android:layout_below="@id/organization_title"
-        android:layout_marginLeft="50dp"
-        android:layout_marginRight="50dp"
-        android:layout_marginTop="40dp"
-        android:textSize="20dp"
-
-        />
-
-    <EditText
+        android:typeface="monospace"
         android:id="@+id/organization_shelter_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -46,6 +35,7 @@
 
 
     <EditText
+        android:typeface="monospace"
         android:id="@+id/organization_shelter_landmarks"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -58,6 +48,7 @@
         />
 
     <EditText
+        android:typeface="monospace"
         android:id="@+id/organization_shelter_maxcapacity"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -70,6 +61,7 @@
         />
 
     <TextView
+        android:typeface="monospace"
         android:id="@+id/organization_provisions_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,6 +76,7 @@
         />
 
     <CheckBox
+        android:typeface="monospace"
         android:id="@+id/organization_checkbox_aid"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -96,6 +89,7 @@
         />
 
     <CheckBox
+        android:typeface="monospace"
         android:id="@+id/organization_checkbox_food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -108,6 +102,7 @@
         />
 
     <CheckBox
+        android:typeface="monospace"
         android:id="@+id/organization_checkbox_water"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -119,6 +114,7 @@
         android:textSize="20dp"
         />
     <Button
+        android:typeface="monospace"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/organization_checkbox_water"

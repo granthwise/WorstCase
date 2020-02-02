@@ -3,10 +3,8 @@ import android.widget.Button;
 import android.os.Bundle;
 import android.app.Activity;
 import android.view.View;
-import android.widget.TextView;
-import java.lang.*;
 
-public class frontPageButtons extends android.app.Activity {
+public class frontPageButtons extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
