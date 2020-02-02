@@ -179,10 +179,20 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         shelter_title.setText(shelterList.get(index).getName());
 
         Button refresh = (Button)findViewById(R.id.refresh_button);
+        Button home = (Button)findViewById(R.id.home2);
         refresh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), MapsActivity.class);
+                //how to pass information
+                startActivity(startIntent);
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
                 //how to pass information
                 startActivity(startIntent);
             }

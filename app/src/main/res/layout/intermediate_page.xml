@@ -1,35 +1,48 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="horizontal"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="#B5DDFF"
-    >
+    android:background="@drawable/middlemen">
 
     <Button
         android:id="@+id/edit"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_alignParent="center"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_marginTop = "250dp"
-        android:layout_weight="1"
+        android:layout_marginStart="28dp"
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="26dp"
+        android:layout_marginRight="26dp"
         android:text="@string/editExisting"
-        android:textSize="30dp"
+        android:textSize="26dp"
         android:typeface="serif" />
 
     <Button
-        android:id="@+id/newShelt"
-        android:layout_width="0dp"
-        android:layout_height="200dp"
-        android:layout_alignParent="center"
-        android:layout_alignParentLeft="true"
-        android:layout_marginTop="250dp"
-        android:layout_weight="1"
+        android:id="@+id/newShelter"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="150dp"
         android:text="@string/newshelt"
         android:textSize="30dp"
         android:typeface="serif" />
 
+    <Button
+        android:id="@+id/home"
+        android:layout_width="wrap_content"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="625dp"
+        android:fontFamily="sans-serif"
+        android:text="Home"
+        android:textSize="20dp"
+        android:typeface="serif" />
 
-</LinearLayout>
+
+</RelativeLayout>

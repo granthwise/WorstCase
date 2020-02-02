@@ -12,8 +12,9 @@ public class intermediatePageButtons extends android.app.Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.intermediate_page);
 
-        Button newShelter = (Button) findViewById(R.id.newShelt);
-        Button editor = (Button) findViewById(R.id.edit);
+        Button newShelter = (Button) findViewById(R.id.newShelter);
+        Button edit = (Button) findViewById(R.id.edit);
+        Button home = (Button)findViewById(R.id.home) ;
 
         newShelter.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -24,10 +25,19 @@ public class intermediatePageButtons extends android.app.Activity {
             }
         });
 
-        editor.setOnClickListener(new View.OnClickListener() {
+        edit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent startIntent = new Intent(getApplicationContext(), EditActivity.class);
+                //how to pass information
+                startActivity(startIntent);
+            }
+        });
+
+        home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent startIntent = new Intent(getApplicationContext(), HomeActivity.class);
                 //how to pass information
                 startActivity(startIntent);
             }

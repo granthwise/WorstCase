@@ -61,10 +61,9 @@ public class EditActivity extends AppCompatActivity {
 
                 String maxCap = "";
 
-                if(organization_shelter_maxcapacity_string.equals("0")){
+                if (organization_shelter_maxcapacity_string.equals("0")) {
                     maxCap = "false";
-                }
-                else{
+                } else {
                     maxCap = "true";
                 }
 
@@ -72,13 +71,10 @@ public class EditActivity extends AppCompatActivity {
                 final AmazonDynamoDB ddb = new AmazonDynamoDBClient(awsCreds);
 
 
-
-                Map< String, AttributeValue> updatesuppliesMap = new HashMap<String,AttributeValue>();
-                updatesuppliesMap.put("Food",new AttributeValue().withS(organization_shelter_food_string));
-                updatesuppliesMap.put("Water",new AttributeValue().withS(organization_shelter_water_string));
-                updatesuppliesMap.put("Medicine",new AttributeValue().withS(organization_shelter_aid_string));
-
-
+                Map<String, AttributeValue> updatesuppliesMap = new HashMap<String, AttributeValue>();
+                updatesuppliesMap.put("Food", new AttributeValue().withS(organization_shelter_food_string));
+                updatesuppliesMap.put("Water", new AttributeValue().withS(organization_shelter_water_string));
+                updatesuppliesMap.put("Medicine", new AttributeValue().withS(organization_shelter_aid_string));
 
 
                 Map<String, AttributeValue> keysMap = new HashMap<>();
@@ -88,8 +84,8 @@ public class EditActivity extends AppCompatActivity {
                 final UpdateItemRequest updateRequest = new UpdateItemRequest()
                         .withTableName("Shelters")
                         .withKey(keysMap)
-                        .addAttributeUpdatesEntry("Supplies",new AttributeValueUpdate().withValue(new AttributeValue().withM(updatesuppliesMap)).withAction(AttributeAction.PUT))
-                        .addAttributeUpdatesEntry("Capacity",new AttributeValueUpdate().withValue(new AttributeValue().withS(maxCap)));
+                        .addAttributeUpdatesEntry("Supplies", new AttributeValueUpdate().withValue(new AttributeValue().withM(updatesuppliesMap)).withAction(AttributeAction.PUT))
+                        .addAttributeUpdatesEntry("Capacity", new AttributeValueUpdate().withValue(new AttributeValue().withS(maxCap)));
 
 
                 class BasicallyAUpdateThread implements Runnable {
@@ -113,12 +109,15 @@ public class EditActivity extends AppCompatActivity {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
+                Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
+
+                startActivity(homeIntent);
 
             }
 
-        });
-        Intent homeIntent = new Intent(getApplicationContext(), HomeActivity.class);
-        startActivity(homeIntent);
-    }
 
+        });
+
+
+    }
 }
