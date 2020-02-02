@@ -27,8 +27,8 @@ public class OrganizerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_organizer);
 
-    Button submit = (Button)findViewById(R.id.submit_button);
-    submit.setOnClickListener(new View.OnClickListener() {
+        Button submit = (Button)findViewById(R.id.submit_button);
+        submit.setOnClickListener(new View.OnClickListener() {
         @Override
         public void onClick(View v) {
 
