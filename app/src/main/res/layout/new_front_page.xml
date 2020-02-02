@@ -8,42 +8,40 @@
     android:layout_height="match_parent"
     tools:context=".MapsActivity"
     android:layout_marginBottom="350sp"
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        <Button
+            android:id="@+id/shelterButton"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom = "true"
+            android:layout_marginRight = "30dp"
+            android:layout_marginBottom = "10dp"
+            android:text="@string/shelter" />
+
+        <Button
+            android:id="@+id/victimButton"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft = "30dp"
+            android:layout_marginBottom = "10dp"
+            android:textAlignment=""
+            android:text= "@string/victim" />
+
+        <TextView
+            android:id="@+id/titleOfPage"
+            android:layout_width="match_parent"
+            android:layout_height="194dp"
+            android:text="@string/title"
+            android:textAllCaps="true"
+            android:textColor="#F44"
+            android:textSize="80sp"
+            />
     >
 
-    <Button
-        android:id="@+id/shelterButton"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom = "true"
-        android:layout_marginRight = "30dp"
-        android:layout_marginBottom = "10dp"
-        android:typeface="monospace"
-        android:text="@string/shelter" />
-
-    <Button
-        android:id="@+id/victimButton"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft = "30dp"
-        android:layout_marginBottom = "10dp"
-        android:typeface="monospace"
-        android:text= "@string/victim" />
-
-    <TextView
-        android:id="@+id/titleOfPage"
-        android:layout_width="wrap_content"
-        android:layout_height="188dp"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
-        android:layout_marginEnd="6dp"
-        android:layout_marginRight="6dp"
-        android:text="@string/title"
-        android:textAllCaps="true"
-        android:textColor="#F44"
-        android:textSize="70sp"
-        android:textStyle="bold"
-        android:typeface="monospace" />
-
-</RelativeLayout>
+    </RelativeLayout>
+    </fragment>
