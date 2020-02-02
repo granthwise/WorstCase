@@ -9,39 +9,39 @@
     tools:context=".MapsActivity"
     android:layout_marginBottom="350sp"
 
-
-
-    />
-    tools:context=".MapsActivity" />
-
-    <Button
-        android:id="@+id/shelterButton"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentBottom = "true"
-        android:layout_marginRight = "30dp"
-        android:layout_marginBottom = "10dp"
-        android:text="@string/shelter" />
-
-    <Button
-        android:id="@+id/victimButton"
-        android:layout_width="150dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_marginLeft = "30dp"
-        android:layout_marginBottom = "10dp"
-        android:textAlignment=""
-        android:text= "@string/victim" />
-
-    <TextView
-        android:id="@+id/titleOfPage"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="194dp"
-        android:text="@string/title"
-        android:textAllCaps="true"
-        android:textColor="#F44"
-        android:textSize="80sp" />
+        android:layout_height="match_parent"
+        <Button
+            android:id="@+id/shelterButton"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom = "true"
+            android:layout_marginRight = "30dp"
+            android:layout_marginBottom = "10dp"
+            android:text="@string/shelter" />
 
-</RelativeLayout>
+        <Button
+            android:id="@+id/victimButton"
+            android:layout_width="150dp"
+            android:layout_height="75dp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft = "30dp"
+            android:layout_marginBottom = "10dp"
+            android:textAlignment=""
+            android:text= "@string/victim" />
 
+        <TextView
+            android:id="@+id/titleOfPage"
+            android:layout_width="match_parent"
+            android:layout_height="194dp"
+            android:text="@string/title"
+            android:textAllCaps="true"
+            android:textColor="#F44"
+            android:textSize="80sp"
+            />
+    >
+
+    </RelativeLayout>
+    </fragment>
