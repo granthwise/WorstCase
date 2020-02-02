@@ -64,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         mMap.setMapType(GoogleMap.MAP_TYPE_HYBRID);
-        mMap.setMinZoomPreference(9);
+        mMap.setMinZoomPreference(12);
 
         BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAYO4MKXNF4PU4GKOT", "NvVpxh0NIAwZpk2zNjDL7ZDg+RMxQXnTK/Kpb4OX");
         final AmazonDynamoDB ddb = new AmazonDynamoDBClient(awsCreds);
@@ -143,11 +143,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             shelterList.add(new shelter(Integer.valueOf(number), Double.valueOf(lat), Double.valueOf(longi), Integer.valueOf(food), Integer.valueOf(water), Integer.valueOf(medicine), capacity, String.valueOf(landmarks)));
         }
 
-        int index = 0;
-        double distance = Math.sqrt(((29.69 - shelterList.get(0).getLat()) * (29.69 - shelterList.get(0).getLat())) + ((277.68 - shelterList.get(0).getLongi()) * (277.68 - shelterList.get(0).getLongi())));
+        /*int index = 0;
+        double distance = Math.sqrt(((29.647771 - shelterList.get(0).getLat()) * (29.647771 - shelterList.get(0).getLat())) + ((277.656264 - shelterList.get(0).getLongi()) * (277.656264 - shelterList.get(0).getLongi())));
         double smallest = distance;
-        for (int x = 1; x < shelterList.size(); x++) {
-            double tempDistance = Math.sqrt(((29.69 - shelterList.get(x).getLat()) * (29.69 - shelterList.get(x).getLat())) + ((277.68 - shelterList.get(x).getLongi()) * (277.68 - shelterList.get(x).getLongi())));
+        */
+
+        int index = 2000;
+        double smallest =200000.000;
+
+        for (int x = 0; x < shelterList.size(); x++) {
+            double tempDistance = Math.sqrt(((29.647771 - shelterList.get(x).getLat()) * (29.647771 - shelterList.get(x).getLat())) + ((277.656264 - shelterList.get(x).getLongi()) * (277.656264 - shelterList.get(x).getLongi())));
             if (shelterList.get(x).getCapacity() == false && tempDistance < smallest ) {
                 smallest = tempDistance;
                 index = x;
@@ -156,15 +161,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         for (int x = 0; x < shelterList.size(); x++) {
             LatLng shelter = new LatLng(shelterList.get(x).getLat(), shelterList.get(x).getLongi());
             if (x == index) {
-                mMap.addMarker(new MarkerOptions().position(shelter).title(shelterList.get(x).name).snippet("Food: " + shelterList.get(x).getStringFood() + "     Water: " + shelterList.get(x).getStringWater() + "     First Aid: " + shelterList.get(x).getStringMedicine() + "     At capacity: " + shelterList.get(x).getCapacity()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
+                mMap.addMarker(new MarkerOptions().position(shelter).title(shelterList.get(x).name).snippet("Food: " + shelterList.get(x).getStringFood() + "   Water: " + shelterList.get(x).getStringWater() + "   First Aid: " + shelterList.get(x).getStringMedicine() + "   At Capacity: " + shelterList.get(x).getCapacity()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_GREEN)));
             }
             else {
-                mMap.addMarker(new MarkerOptions().position(shelter).title(shelterList.get(x).name).snippet("Food: " + shelterList.get(x).getStringFood() + "     Water: " + shelterList.get(x).getStringWater() + "     First Aid: " + shelterList.get(x).getStringMedicine() + "     At capacity: " + shelterList.get(x).getCapacity()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
+                mMap.addMarker(new MarkerOptions().position(shelter).title(shelterList.get(x).name).snippet("Food: " + shelterList.get(x).getStringFood() + "   Water: " + shelterList.get(x).getStringWater() + "   First Aid: " + shelterList.get(x).getStringMedicine() + "   At Capacity: " + shelterList.get(x).getCapacity()).icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_BLUE)));
             }
             mMap.moveCamera(CameraUpdateFactory.newLatLng(shelter));
         }
 
-        LatLng shelter = new LatLng(29.69, 277.68);
+        LatLng shelter = new LatLng(29.647771, 277.656264);
         mMap.addMarker(new MarkerOptions().position(shelter).title("current location").icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_RED)));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(shelter));
 
