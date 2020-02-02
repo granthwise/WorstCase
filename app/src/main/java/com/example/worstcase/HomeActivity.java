@@ -18,7 +18,7 @@ public class HomeActivity extends AppCompatActivity {
         victim.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent victimIntent = new Intent(getApplicationContext(), HomeActivity.class);
+                Intent victimIntent = new Intent(getApplicationContext(), MapsActivity.class);
                 startActivity(victimIntent);
             }
         });
