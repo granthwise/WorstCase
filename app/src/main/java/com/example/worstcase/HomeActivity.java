@@ -25,7 +25,7 @@ public class HomeActivity extends AppCompatActivity {
             Button shelter = (Button) findViewById(R.id.shelterButton);
             shelter.setOnClickListener(new View.OnClickListener() {
                 public void onClick(View view) {
-                    Intent shelterIntent = new Intent(getApplicationContext(), OrganizerActivity.class);
+                    Intent shelterIntent = new Intent(getApplicationContext(), intermediatePageButtons.class);
                     startActivity(shelterIntent);
                 }
             });

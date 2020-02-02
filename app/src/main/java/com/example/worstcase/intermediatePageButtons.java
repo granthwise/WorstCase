@@ -18,7 +18,7 @@ public class intermediatePageButtons extends android.app.Activity {
         newShelter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), EditActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), OrganizerActivity.class);
                 //how to pass information
                 startActivity(startIntent);
             }
@@ -27,7 +27,7 @@ public class intermediatePageButtons extends android.app.Activity {
         editor.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent startIntent = new Intent(getApplicationContext(), OrganizerActivity.class);
+                Intent startIntent = new Intent(getApplicationContext(), EditActivity.class);
                 //how to pass information
                 startActivity(startIntent);
             }
