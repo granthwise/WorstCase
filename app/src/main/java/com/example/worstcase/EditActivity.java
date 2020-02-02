@@ -9,6 +9,18 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.amazonaws.auth.BasicAWSCredentials;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDB;
+import com.amazonaws.services.dynamodbv2.AmazonDynamoDBClient;
+import com.amazonaws.services.dynamodbv2.model.AttributeAction;
+import com.amazonaws.services.dynamodbv2.model.AttributeValue;
+import com.amazonaws.services.dynamodbv2.model.AttributeValueUpdate;
+import com.amazonaws.services.dynamodbv2.model.UpdateItemRequest;
+import com.amazonaws.services.dynamodbv2.model.UpdateItemResult;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class EditActivity extends AppCompatActivity {
 
     @Override
@@ -21,25 +33,21 @@ public class EditActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                TextView organization_title = (TextView) findViewById(R.id.organization_title);
-                TextView organization_provisions_header = (TextView) findViewById(R.id.organization_provisions_header);
+                TextView update_title = (TextView) findViewById(R.id.update_title);
+                TextView edit_organization_provisions_header = (TextView) findViewById(R.id.edit_organization_provisions_header);
 
-                final CheckBox organization_checkbox_aid = (CheckBox) findViewById(R.id.organization_checkbox_aid);
-                final CheckBox organization_checkbox_food = (CheckBox) findViewById(R.id.organization_checkbox_food);
-                final CheckBox organization_checkbox_water = (CheckBox) findViewById(R.id.organization_checkbox_water);
-
-                EditText organization_shelter_latitude = (EditText) findViewById(R.id.organization_shelter_latitude);
-                EditText organization_shelter_longitude = (EditText) findViewById(R.id.organization_shelter_longitude);
-                EditText organization_shelter_id = (EditText) findViewById(R.id.organization_id);
-                EditText organization_shelter_maxcapacity = (EditText) findViewById(R.id.organization_shelter_maxcapacity);
-                EditText organization_shelter_landmarks = (EditText) findViewById(R.id.organization_shelter_landmarks);
+                EditText edit_organization_shelter_aid = (EditText) findViewById(R.id.edit_organization_shelter_aid);
+                EditText edit_organization_shelter_food = (EditText) findViewById(R.id.edit_organization_shelter_food);
+                EditText edit_organization_shelter_id = (EditText) findViewById(R.id.edit_organization_id);
+                EditText edit_organization_shelter_maxcapacity = (EditText) findViewById(R.id.edit_organization_shelter_maxcapacity);
+                EditText edit_organization_shelter_water = (EditText) findViewById(R.id.edit_organization_shelter_water);
 
                 //return these to dynamo
-                String organization_shelter_id_string = organization_shelter_id.getText().toString();
-                String organization_shelter_latitude_string = organization_shelter_latitude.getText().toString();
-                String organization_shelter_longitude_string = organization_shelter_longitude.getText().toString();
-                String organization_shelter_landmarks_string = organization_shelter_landmarks.getText().toString();
-                String organization_shelter_maxcapacity_string = organization_shelter_maxcapacity.getText().toString();
+                String organization_shelter_aid_string = edit_organization_shelter_aid.getText().toString();
+                String organization_shelter_food_string = edit_organization_shelter_food.getText().toString();
+                String organization_shelter_water_string = edit_organization_shelter_water.getText().toString();
+                String organization_shelter_id_string = edit_organization_shelter_id.getText().toString();
+                String organization_shelter_maxcapacity_string = edit_organization_shelter_maxcapacity.getText().toString();
 
                 final String[] organization_checkbox_aid_string = new String[1];
                 final String[] organization_checkbox_food_string = new String[1];
@@ -50,16 +58,59 @@ public class EditActivity extends AppCompatActivity {
                 organization_checkbox_water_string[0] = "false";
                 organization_checkbox_food_string[0] = "false";
 
-                if (organization_checkbox_aid.isChecked()) {
-                    organization_checkbox_aid_string[0] = "true";
+                String maxCap = "";
+
+                if(organization_shelter_maxcapacity_string.equals("0")){
+                    maxCap = "false";
+                }
+                else{
+                    maxCap = "true";
                 }
 
-                if (organization_checkbox_food.isChecked()) {
-                    organization_checkbox_food_string[0] = "true";
+                BasicAWSCredentials awsCreds = new BasicAWSCredentials("AKIAYO4MKXNF4PU4GKOT", "NvVpxh0NIAwZpk2zNjDL7ZDg+RMxQXnTK/Kpb4OX");
+                final AmazonDynamoDB ddb = new AmazonDynamoDBClient(awsCreds);
+
+
+
+                Map< String, AttributeValue> updatesuppliesMap = new HashMap<String,AttributeValue>();
+                updatesuppliesMap.put("Food",new AttributeValue().withS(organization_shelter_food_string));
+                updatesuppliesMap.put("Water",new AttributeValue().withS(organization_shelter_water_string));
+                updatesuppliesMap.put("Medicine",new AttributeValue().withS(organization_shelter_aid_string));
+
+
+
+
+                Map<String, AttributeValue> keysMap = new HashMap<>();
+                keysMap.put("ID", new AttributeValue().withN(organization_shelter_id_string));
+
+
+                final UpdateItemRequest updateRequest = new UpdateItemRequest()
+                        .withTableName("Shelters")
+                        .withKey(keysMap)
+                        .addAttributeUpdatesEntry("Supplies",new AttributeValueUpdate().withValue(new AttributeValue().withM(updatesuppliesMap)).withAction(AttributeAction.PUT))
+                        .addAttributeUpdatesEntry("Capacity",new AttributeValueUpdate().withValue(new AttributeValue().withS(maxCap)));
+
+
+                class BasicallyAUpdateThread implements Runnable {
+                    private volatile UpdateItemResult result;
+
+                    @Override
+                    public void run() {
+                        result = ddb.updateItem(updateRequest);
+                    }
+
+                    public UpdateItemResult getValue() {
+                        return result;
+                    }
                 }
 
-                if (organization_checkbox_water.isChecked()) {
-                    organization_checkbox_water_string[0] = "true";
+                BasicallyAUpdateThread yeet = new BasicallyAUpdateThread();
+                Thread thread4 = new Thread(yeet);
+                thread4.start();
+                try {
+                    thread4.join();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
                 }
 
             }
